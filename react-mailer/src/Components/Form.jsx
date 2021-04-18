@@ -1,8 +1,12 @@
 import React , {useState} from 'react';
 import axios from 'axios';
 import Navbar from './Navbar'
-function FormList(){
-
+import {makePrivate} from './Protect';
+function FormList() {
+    
+    
+    
+const [error, setError] = useState("");
 
 const [state, setState] = useState({
     name: '',
@@ -26,8 +30,9 @@ const myStyle ={
 }
 const onSub= async(e)=>{
     e.preventDefault();
-
-
+     /// Clear error
+    setError("")
+    /// Create new mail 
     const newMail = {
         name: state.name,
         sender: state.sender,
@@ -36,28 +41,30 @@ const onSub= async(e)=>{
         subject: state.subject,
         text: state.text
     }
-
-    await axios.post('http://localhost:3002/sendMail', newMail)
-    .then(response => console.log(response.data))
-    .catch(err => console.log(`An error occured while trying to send data to this Api ${err}`))
-
-
-    // setState({...state,
-    //  sender: "",
-    //   receiver:"",
-    //    reply:"",
-    //     subject:"",
-    //      text:""
-
-    // })
-      //  window.location = '/'
+    /// Send mail
+    await axios.post(`${process.env.REACT_APP_API}`, newMail, {
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        }
+    })
+        .then(response => {
+           
+            if(response.status === 200) {
+            ///TODO: Create another state property to show sent
+            }
+        })
+        .catch(err => setError(err.response.data.Message));
 }
 
     return(
 
         <React.Fragment>
-        <Navbar />
+            <Navbar />
+            
+           
             <div className='container' style={myStyle} >
+                 <p style={{color:"red"}}>{error }</p>
                 <h1>Mail Sender</h1>
                 <div className='jumbotron'>
                     <form onSubmit={onSub}>
@@ -100,4 +107,4 @@ const onSub= async(e)=>{
     )
 }
 
-export default FormList;
+export default makePrivate(FormList);

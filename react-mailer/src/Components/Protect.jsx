@@ -2,26 +2,21 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 
 
-function MakePrivate(WrappedComponent) {
+function makePrivate(WrappedComponent) {
     return class extends React.Component {
-      state = { isAuth:false }
-        componentDidMount() {
-            console.log('rannn')
-            const token =  localStorage.getItem("token");
-            if(token === null || token === undefined || token === false){
-            return this.setState({ isAuth:false })
+        state = { isAuth: false }
+        componentWillMount() {
+            const token = localStorage.getItem("token");
+            console.log(token);
+            if (token) {
+                this.setState({ isAuth: true })
             }
-            this.setState({isAuth:true })
         }
-        render() { 
-            return (
-              <div>
-                  { this.state.isAuth ? <WrappedComponent/>: <Redirect to='/login' /> }
-              </div>
-            );
+        render() {
+            return !this.state.isAuth ? <Redirect to="/login" /> : <WrappedComponent />
         }
     };
-}
+};
 
 
-export  {MakePrivate}
+    export { makePrivate };

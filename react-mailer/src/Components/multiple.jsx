@@ -1,7 +1,7 @@
 import React , {useState} from 'react';
 import axios from 'axios';
 import Navbar from './Navbar'
-import {MakePrivate} from './Protect';
+import {makePrivate} from './Protect';
 
 
 function Multiple(){
@@ -41,9 +41,10 @@ const onSub= async(e)=>{
 
 
                 try{
-                    let response =  await axios.post('http://localhost:3002/multipleSend', formData, {
+                    let response =  await axios.post(`${process.env.REACT_APP_API}/multipleSend`, formData, {
                           headers: {
-                              'Content-Type': 'multipart/form-data'
+                            'Content-Type': 'multipart/form-data',
+                              "Authorization":`Bearer ${localStorage.getItem("token")}` 
                           }
                       })
                       console.log(response.data)
@@ -105,4 +106,4 @@ const onSub= async(e)=>{
     )
 }
 
-export default MakePrivate(Multiple);
+export default makePrivate(Multiple);
