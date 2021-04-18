@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import axios from 'axios'
 import NavBar from './Navbar';
 import {useHistory} from "react-router-dom"
-
+import {checkedLoggedInUser} from './checkLoggedIn';
 function SignUp() {
     
  let history = useHistory();
@@ -93,4 +93,4 @@ const hStyle ={
     )
 }
 
-export default SignUp
+export default checkedLoggedInUser(SignUp)

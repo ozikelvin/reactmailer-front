@@ -42,7 +42,7 @@ const onSub= async(e)=>{
         text: state.text
     }
     /// Send mail
-    await axios.post(`${process.env.REACT_APP_API}`, newMail, {
+    await axios.post(`${process.env.REACT_APP_API}/sendMail`, newMail, {
         headers: {
             'Content-Type': 'application/json;charset=UTF-8',
             "Authorization": `Bearer ${localStorage.getItem("token")}`

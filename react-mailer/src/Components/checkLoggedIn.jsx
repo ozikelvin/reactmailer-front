@@ -2,21 +2,21 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 
 
-function makePrivAdmin(WrappedComponent) {
+function checkedLoggedInUser(WrappedComponent) {
     return class extends React.Component {
       state = { isAuth:false }
         componentWillMount() {
-            const token =  localStorage.getItem("admin_token");
+            const token =  localStorage.getItem("token");
             console.log(token);
             if(token ){
                 this.setState({isAuth: true})
             }
         }
         render() {
-            return !this.state.isAuth ? <Redirect to="/admin.v1/login" /> : <WrappedComponent/>
+            return this.state.isAuth ? <Redirect to="/sendMail" /> : <WrappedComponent/>
         }
     };
 }
 
 
-export  {makePrivAdmin}
+export  {checkedLoggedInUser}

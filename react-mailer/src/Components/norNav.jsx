@@ -1,10 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link , useHistory} from 'react-router-dom'
 
 
 function NorNav(){
 
-
+    let history = useHistory();
 
     const myStyle ={
         color: 'white',
@@ -13,6 +13,12 @@ function NorNav(){
 
     const sty ={
         color:'white'
+    }
+
+    const Logout = () => {
+        localStorage.removeItem("admin_token");
+        history.push('/admin.v1/login');
+
     }
 
 
@@ -24,10 +30,15 @@ function NorNav(){
                     <li className="nav-item">
                         <Link to="/coupons" className='nav-link' style={sty} >Coupons</Link>
                     </li>
-                    <div>
+                    <div className="nav">
                         <ul className='nav navbar-nav navbar-right'>
                             <li className='nav-item' >
                                 <Link to='/createCoupon' className='btn btn-warning navbar-btn btn-sm m-2 ' style={sty} >Create Coupon</Link>
+                            </li>
+                        </ul>
+                        <ul className=''>
+                            <li className='nav-item' >
+                                <Link to='#' onClick={Logout}  className='btn btn-primary navbar-btn btn-sm m-2 ' style={sty} >Logout</Link>
                             </li>
                         </ul>
                     </div>
