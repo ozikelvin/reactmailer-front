@@ -60,7 +60,7 @@ const onSub= async(e)=>{
          text:"",
          attachment:""
     })
-      //  window.location = '/'
+ 
 }
 
     return(
