@@ -2,9 +2,12 @@
 import React, {useState} from 'react';
 import axios from 'axios'
 import NavBar from './Navbar';
+import {useHistory} from "react-router-dom"
 
 function SignIn(){
 
+    let history = useHistory();
+const [ error , setError] = useState()
 const [state, setState] = useState({
     email:'',
     password: ''
@@ -19,24 +22,21 @@ const myStyle = {
 
 const onSub = async (e) =>{
     e.preventDefault();
-
+setError("")
     const newUser = {
         email: state.email,
         password: state.password
     }
 
-   await axios.post('http://localhost:3002/login', newUser)
+   await axios.post(`${process.env.REACT_APP_API}/login`, newUser)
     .then(res =>{
-        if(res.data.success === true){
-            console.log(res.data.Message)
-            window.location = '/sendMail'
-        }else if(res.data.expired === true){
-            window.location = '/timer'
-        }else{
-            window.location = '/login'
-        }
+         console.log(res);
+           if(res.status === 200) {
+            localStorage.setItem("token", res.data.token);
+            history.push("/sendMail");
+        } 
     })
-    .catch(err => console.log(err))
+    .catch(err =>setError(err.response.data.Message))
 
     setState({...state,
         email:'',
@@ -49,6 +49,7 @@ const hStyle ={
     return(
         <div>
             <NavBar />
+             <p style={{color:"red"}}>{error }</p>
             <div style={myStyle} className="container">
             <div className="jumbotron">
             <h1 style={hStyle} >Login</h1>
