@@ -8,6 +8,7 @@ import SignUp from './Components/signUp.jsx';
 import Login from './Components/login.jsx';
 import AdminLog from './Components/aminLog';
 import AdminDash from './Components/adminDash';
+import CreateCoupon from './Components/CreateCoupon'
 
 
 
@@ -23,6 +24,7 @@ function App(){
         <Route path='/timer'  component={TimeOut} />
         <Route  path='/sendMail' component={Form} />
         <Route exact path='/login' component={Login} />
+        <Route path='/createCoupon' component={CreateCoupon} />
       </Router>
     </div>
   )

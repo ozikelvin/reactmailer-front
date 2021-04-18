@@ -1,7 +1,7 @@
 import React , {useState, useEffect} from 'react';
 import NorNav from './norNav';
 import axios from 'axios'
-import {MakePrivAdmin} from './adHoc';
+//import {MakePrivAdmin} from './adHoc';
 
 // const Users =({user,onDelete })=>{
 //     <div>
@@ -39,13 +39,20 @@ function AdminDash(){
 
  //} )
 
+ const sty ={
+     color:'white'
+ }
+ const tbSty ={
+     marginTop:'20px'
+ }
+
 return(
     <div>
         <NorNav />
             <div className='container'>
                 <div>
-                    <table>
-                            <thead>
+                    <table style={tbSty} className='table table-striped'>
+                            <thead style={sty} className='table bg-dark' >
                                 <tr>
                                     <td>User-Name</td>
                                     <td> Email </td>
@@ -64,4 +71,4 @@ return(
 
 
 
-export default  MakePrivAdmin(AdminDash)
+export default  AdminDash
