@@ -3,7 +3,7 @@ import NorNav from "./norNav";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import {makePrivAdmin} from './adHoc';
+import { makePrivAdmin } from "./adHoc";
 
 const Users = ({ user, onDelete }) => {
   return (
@@ -51,7 +51,7 @@ function AdminDash() {
       .get(url, {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
-          "Authorization": `Bearer ${localStorage.getItem("admin_token")}`
+          Authorization: `Bearer ${localStorage.getItem("admin_token")}`,
         },
       })
       .then((res) => {
@@ -70,7 +70,7 @@ function AdminDash() {
       .get("http://localhost:3002/admin.v1/details", {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
-          "Authorization": `Bearer ${localStorage.getItem("admin_token")}`
+          Authorization: `Bearer ${localStorage.getItem("admin_token")}`,
         },
       })
       .then((res) => {
@@ -96,8 +96,8 @@ function AdminDash() {
         { userID: id },
         {
           headers: {
-                "Content-Type": "application/json;charset=UTF-8",
-               "Authorization": `Bearer ${localStorage.getItem("admin_token")}`
+            "Content-Type": "application/json;charset=UTF-8",
+            Authorization: `Bearer ${localStorage.getItem("admin_token")}`,
           },
         }
       )
@@ -116,8 +116,8 @@ function AdminDash() {
         { couponID: id },
         {
           headers: {
-                "Content-Type": "application/json;charset=UTF-8",
-               "Authorization": `Bearer ${localStorage.getItem("admin_token")}`
+            "Content-Type": "application/json;charset=UTF-8",
+            Authorization: `Bearer ${localStorage.getItem("admin_token")}`,
           },
         }
       )
