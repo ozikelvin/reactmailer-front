@@ -100,4 +100,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default checkedLoggedInUser(SignIn);

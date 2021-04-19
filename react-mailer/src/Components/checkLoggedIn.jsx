@@ -3,14 +3,7 @@ import { Redirect } from "react-router-dom";
 
 function checkedLoggedInUser(WrappedComponent) {
   return class extends React.Component {
-    state = { isAuth: false };
-    componentWillMount() {
-      const token = localStorage.getItem("token");
-      console.log(token);
-      if (token) {
-        this.setState({ isAuth: true });
-      }
-    }
+ state = { isAuth: localStorage.getItem("token") ? true : false };
     render() {
       return this.state.isAuth ? (
         <Redirect to="/sendMail" />

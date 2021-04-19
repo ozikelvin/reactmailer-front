@@ -127,4 +127,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default checkedLoggedInUser(SignUp)
