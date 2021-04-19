@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Navbar from "./Navbar";
 import { makePrivate } from "./Protect";
+import NavbarUser from "./dasNavBar";
 
 function Multiple() {
   const [error, setError] = useState(null);
@@ -28,7 +28,7 @@ function Multiple() {
     setState({ ...state, attachment: e.target.files[0] });
 
   const myStyle = {
-    marginTop: "30px",
+    marginTop: "12%",
   };
   const onSub = async (e) => {
     e.preventDefault();
@@ -76,7 +76,7 @@ function Multiple() {
 
   return (
     <React.Fragment>
-      <Navbar />
+      <NavbarUser />
       {error ? <p className="alert alert-danger">{error}</p> : <p></p>}
       <div className="container" style={myStyle}>
         <h1>Send With Attachment</h1>
@@ -94,7 +94,7 @@ function Multiple() {
                 />
               </div>
               <div className="form-group col-sm-6">
-                <label htmlFor="Sender">Sender</label>
+                <label htmlFor="Sender">Sender Email</label>
                 <input
                   type="text"
                   name="sender"

@@ -17,7 +17,7 @@ const Users = ({ user, onDelete }) => {
           onClick={() => onDelete(user._id)}
           className="btn btn-danger my-3"
         >
-          Delete
+          Delete  <i className="fas fa-trash"></i>
         </Link>{" "}
       </td>
     </tr>
@@ -27,7 +27,7 @@ const Coupon = ({ coupon, onDelete }) => {
   return (
     <tr>
       <td> {coupon.code} </td>
-      <td> {coupon.isUsed ? "Disabled" : "Enabled"} </td>
+      <td> {coupon.isUsed ? "Used" : "Not-Used"} </td>
       <td>
         {" "}
         <Link
@@ -35,7 +35,7 @@ const Coupon = ({ coupon, onDelete }) => {
           onClick={() => onDelete(coupon._id)}
           className="btn btn-danger my-3"
         >
-          Delete
+          Delete <i className="fas fa-trash"></i>
         </Link>{" "}
       </td>
     </tr>
@@ -46,23 +46,23 @@ function AdminDash() {
   const [coupons, setCoupons] = useState([]);
   const [users, setUsers] = useState([]);
 
-  const getAllDetails = (url) => {
-    axios
-      .get(url, {
-        headers: {
-          "Content-Type": "application/json;charset=UTF-8",
-          Authorization: `Bearer ${localStorage.getItem("admin_token")}`,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        if (res.status === 200) {
-          setCoupons(res.data.details.coupons);
-          setUsers(res.data.details.users);
-          console.log(users);
-        }
-      });
-  };
+  // const getAllDetails = (url) => {
+  //   axios
+  //     .get(url, {
+  //       headers: {
+  //         "Content-Type": "application/json;charset=UTF-8",
+  //         Authorization: `Bearer ${localStorage.getItem("admin_token")}`,
+  //       },
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       if (res.status === 200) {
+  //         setCoupons(res.data.details.coupons);
+  //         setUsers(res.data.details.users);
+  //         console.log(users);
+  //       }
+  //     });
+  // };
 
   useEffect(() => {
     // getAllDetails('http://localhost:3002/admin.v1/details')
@@ -78,7 +78,6 @@ function AdminDash() {
         if (res.status === 200) {
           setCoupons(res.data.details.coupons);
           setUsers(res.data.details.users);
-          console.log(users);
         }
       });
   }, []);

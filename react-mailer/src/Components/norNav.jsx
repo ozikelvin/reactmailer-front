@@ -27,8 +27,8 @@ function NorNav() {
         </Link>
         <ul className="nav">
           <li className="nav-item">
-            <Link to="/coupons" className="nav-link" style={sty}>
-              Coupons
+            <Link to="#" className="nav-link" style={sty}>
+            <i className="fas fa-code"></i>
             </Link>
           </li>
           <div className="nav">

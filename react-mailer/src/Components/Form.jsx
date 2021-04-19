@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Navbar from "./Navbar";
+import NavbarUser from "./dasNavBar";
 import { makePrivate } from "./Protect";
 function FormList() {
   const [error, setError] = useState(null);
@@ -24,7 +24,7 @@ function FormList() {
   const onChaneSubject = (e) => setState({ ...state, subject: e.target.value });
 
   const myStyle = {
-    marginTop: "30px",
+    marginTop:'12%'
   };
   const onSub = async (e) => {
     e.preventDefault();
@@ -54,19 +54,21 @@ function FormList() {
         if (response.status === 200) {
           ///TODO: Create another state property to show sent
           setSuccess("Mail sent successfully.");
+          setTimeout(()=> {setSuccess('')}, 3500)
         }
       })
       .catch((err) => setError(err.response.data.Message));
   };
 
+
   return (
     <React.Fragment>
-      <Navbar />
+      <NavbarUser />
 
       {error ? <p className="alert alert-danger">{error}</p> : <p></p>}
       <div className="container" style={myStyle}>
         <h1>Mail Sender</h1>
-        <div className="jumbotron">
+        <div  className="jumbotron">
           <form onSubmit={onSub}>
             <div className="row">
               <div className="form-group col-sm-6">

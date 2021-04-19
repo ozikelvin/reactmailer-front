@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import NavBar from "./Navbar";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { checkedLoggedInUser } from "./checkLoggedIn";
 function SignIn() {
   let history = useHistory();
-  const [error, setError] = useState();
+
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -17,10 +17,18 @@ function SignIn() {
   const myStyle = {
     marginTop: "20px",
   };
+  const [info, setInfo] = useState(null);
+  const syc ={
+    color: "black",
+    marginTop:'3px',
+    width:'50%',
+    marginLeft:'10px'
+  }
+
 
   const onSub = async (e) => {
     e.preventDefault();
-    setError("");
+    setInfo("");
     const newUser = {
       email: state.email,
       password: state.password,
@@ -35,19 +43,29 @@ function SignIn() {
           history.push("/sendMail");
         }
       })
-      .catch((err) => setError(err.response.data.Message));
+      .catch((err) =>{
+
+         setInfo('Invalid Username or Password')
+         setTimeout(()=> {setInfo(null)}, 2800)
+        });
 
     setState({ ...state, email: "", password: "" });
   };
+  const jub={
+    width:'50%',
+    marginLeft:'25%',
+    marginTop:'12%'
+  }
   const hStyle = {
     textAlign: "center",
   };
   return (
     <div>
       <NavBar />
-      <p style={{ color: "red" }}>{error}</p>
+
+      {info ? <p style={syc} className=' alert alert-danger ' ><b> {info} </b></p>:<p></p> }
       <div style={myStyle} className="container">
-        <div className="jumbotron">
+        <div style={jub} className="jumbotron">
           <h1 style={hStyle}>Login</h1>
           <form onSubmit={onSub}>
             <div className="form-group">
@@ -71,13 +89,15 @@ function SignIn() {
               />
             </div>
             <div>
-              <input type="submit" value="Submit" />
+              <input type="submit" className='btn btn-success' value="Submit" />
             </div>
           </form>
+          <br />
+          <b>Need to upgrade coupon? click the coupon link <Link to='#' >Coupon</Link> </b>
         </div>
       </div>
     </div>
   );
 }
 
-export default checkedLoggedInUser(SignIn);
+export default SignIn;

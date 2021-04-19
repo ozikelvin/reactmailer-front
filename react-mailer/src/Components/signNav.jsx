@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function NavSty() {
 
   const navB ={
     position:'fixed',
@@ -12,15 +12,9 @@ function Navbar() {
 
   const myStyle = {
     color: "white",
-    marginLeft:'12px'
-  };
-  const myStyleT = {
-    color: "white",
-    marginLeft:'12px',
-    marginTop:'2px'
+    marginLeft:'9px'
 
   };
-
   const im={
     width:'15%'
   }
@@ -34,8 +28,8 @@ function Navbar() {
         </Link>
         <ul className="nav">
           <li className="nav-item">
-            <Link to="/"  style={myStyleT} className="nav-link">
-              Sign Up <i className="fas fa-users"></i>
+            <Link to="/login" style={myStyle} className="nav-link">
+              Login <i className="fas fa-users"></i>
             </Link>
           </li>
         </ul>
@@ -44,4 +38,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default NavSty;

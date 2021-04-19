@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import NavBar from "./Navbar";
+import NavBar from "./signNav";
 import { useHistory } from "react-router-dom";
 import { checkedLoggedInUser } from "./checkLoggedIn";
 function SignUp() {
   let history = useHistory();
-  const [error, setError] = useState();
+  const [info, setInfo] = useState(null);
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -22,7 +22,7 @@ function SignUp() {
 
   const onSub = async (e) => {
     e.preventDefault();
-    setError("");
+    setInfo("");
     const newUser = {
       name: state.name,
       email: state.email,
@@ -38,7 +38,10 @@ function SignUp() {
           history.push("/login");
         }
       })
-      .catch((err) => setError(err.response.data.Message));
+      .catch((err) => {
+        setInfo(err.response.data.Message)
+        setTimeout(()=> {setInfo(null)}, 2800)
+      });
 
     setState({
       ...state,
@@ -48,6 +51,18 @@ function SignUp() {
       coupon: "",
     });
   };
+  const syc ={
+    color: "black",
+    marginTop:'3px',
+    width:'50%',
+    marginLeft:'10px'
+  }
+
+  const jub={
+    width:'50%',
+    marginLeft:'25%',
+    marginTop:'8%'
+  }
   const hStyle = {
     textAlign: "center",
   };
@@ -55,9 +70,10 @@ function SignUp() {
   return (
     <div>
       <NavBar />
-      <p style={{ color: "red" }}>{error}</p>
+
       <div style={myStyle} className="container">
-        <div className="jumbotron">
+        <div style={jub} className="jumbotron">
+        {info ? <p style={syc} className=' alert alert-danger ' ><b> {info} </b></p>:<p></p> }
           <h1 style={hStyle}>Sign Up</h1>
           <form onSubmit={onSub}>
             <div className="form-group">
@@ -102,7 +118,7 @@ function SignUp() {
               />
             </div>
             <div>
-              <input type="submit" value="Submit" />
+              <input type="submit" className='btn btn-success' value="Submit" />
             </div>
           </form>
         </div>
@@ -111,4 +127,4 @@ function SignUp() {
   );
 }
 
-export default checkedLoggedInUser(SignUp);
+export default SignUp;
