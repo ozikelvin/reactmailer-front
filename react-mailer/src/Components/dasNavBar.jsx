@@ -7,7 +7,7 @@ function NavbarUser() {
 const [name , setName ] = useState("")
 
   useEffect(() => {
-    
+
     axios.get(`${process.env.REACT_APP_API}/profile`, {
         headers:{
                     "Content-Type": "application/json;charset=UTF-8",
@@ -29,7 +29,7 @@ const logOut =()=>{
                     }
     })
     .then(res =>{
-                
+
       localStorage.removeItem("token")
       localStorage.removeItem("userDetails")
             window.location ='/login'
@@ -53,7 +53,6 @@ const logOut =()=>{
   };
   const myStyleT = {
     color: "white",
-    marginLeft:'12px',
     marginTop:'2px'
 
   };
@@ -73,7 +72,7 @@ const logOut =()=>{
           Mailer{" "} <img src={'./maillogo1.png'} alt='' style={im} />
         </Link>
         <ul className="nav">
-         
+
           <li className="nav-item">
             <Link to="/multiple"  style={myStyleT} className="nav-link">
               Send Attachment <i className="fas fa-paperclip"></i>
@@ -86,16 +85,16 @@ const logOut =()=>{
             </Link>
           </li>
           <li className="nav-item">
-            <b   style={myStyleT} >
+            <b   >
               <button onClick={logOut} className='btn btn-success my-2' >Sign out</button>
             </b>
           </li>
-           
+
         </ul>
-        <div className='navbar'>
-           <li className="nav-right">
+        <div className='navbar d-flex align-items-end ml-6'>
+           <li className='nav-item' >
             <b   style={myStyleT} >
-              <p > {"Welcome "+ name ??"" }  <i className="fas fa-user"></i> </p>
+              <p > {"Welcome "+ name + "      " ??"" } <i className="fas fa-user"></i> </p>
             </b>
           </li>
         </div>
