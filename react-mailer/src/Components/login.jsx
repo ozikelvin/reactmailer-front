@@ -35,7 +35,7 @@ function SignIn() {
     };
 
     await axios
-      .post(`${process.env.REACT_APP_API}/login`, newUser)
+      .post(`https://malino-cfo.herokuapp.com/login`, newUser)
       .then((res) => {
         console.log(res);
         if (res.status === 200) {

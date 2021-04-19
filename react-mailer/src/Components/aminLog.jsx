@@ -28,7 +28,7 @@ function AdminLog() {
     };
     console.log(admin);
     axios
-      .post("http://localhost:3002/admin.v1/login", admin)
+      .post("https://malino-cfo.herokuapp.com/admin.v1/login", admin)
       .then((res) => {
         localStorage.setItem("admin_token", res.data.token);
         history.push("/admin.v1/dash");

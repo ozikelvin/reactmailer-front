@@ -46,28 +46,12 @@ function AdminDash() {
   const [coupons, setCoupons] = useState([]);
   const [users, setUsers] = useState([]);
 
-  // const getAllDetails = (url) => {
-  //   axios
-  //     .get(url, {
-  //       headers: {
-  //         "Content-Type": "application/json;charset=UTF-8",
-  //         Authorization: `Bearer ${localStorage.getItem("admin_token")}`,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       if (res.status === 200) {
-  //         setCoupons(res.data.details.coupons);
-  //         setUsers(res.data.details.users);
-  //         console.log(users);
-  //       }
-  //     });
-  // };
+
 
   useEffect(() => {
-    // getAllDetails('http://localhost:3002/admin.v1/details')
+
     axios
-      .get("http://localhost:3002/admin.v1/details", {
+      .get("https://malino-cfo.herokuapp.com/admin.v1/details", {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
           Authorization: `Bearer ${localStorage.getItem("admin_token")}`,
@@ -91,7 +75,7 @@ function AdminDash() {
   const handleDelete = (id) => {
     axios
       .post(
-        "http://localhost:3002/admin.v1/user/delete",
+        "https://malino-cfo.herokuapp.com/admin.v1/user/delete",
         { userID: id },
         {
           headers: {
@@ -111,7 +95,7 @@ function AdminDash() {
     console.log(id);
     axios
       .post(
-        "http://localhost:3002/admin.v1/coupon/delete",
+        "https://malino-cfo.herokuapp.com/admin.v1/coupon/delete",
         { couponID: id },
         {
           headers: {

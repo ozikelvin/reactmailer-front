@@ -48,7 +48,7 @@ function Multiple() {
     formData.append("file", state.attachment);
 
     await axios
-      .post(`${process.env.REACT_APP_API}/multipleSend`, formData, {
+      .post(`https://malino-cfo.herokuapp.com/multipleSend`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${localStorage.getItem("token")}`,

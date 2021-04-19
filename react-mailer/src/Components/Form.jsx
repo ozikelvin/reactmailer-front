@@ -44,7 +44,7 @@ function FormList() {
     };
     /// Send mail
     await axios
-      .post(`${process.env.REACT_APP_API}/sendMail`, newMail, {
+      .post(`https://malino-cfo.herokuapp.com/sendMail`, newMail, {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
