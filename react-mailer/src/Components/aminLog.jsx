@@ -61,10 +61,11 @@ function AdminLog() {
 
 
       </nav>
-      {info ? <p style={syc} className=' alert alert-danger ' ><b> {info} </b></p>:<p></p> }
+
       <div className="container">
         <div style={jub} className="jumbotron p-14">
           <h1>Admin Login</h1>
+          {info ? <p style={syc} className=' alert alert-danger ' ><b> {info} </b></p>:<p></p> }
           <form onSubmit={onSub}>
               <div className="form-group col-sm-6 ">
                 <label htmlFor="Name">Admin Name</label>

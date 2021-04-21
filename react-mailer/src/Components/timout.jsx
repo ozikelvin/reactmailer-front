@@ -13,12 +13,12 @@ function Timeout() {
   return (
     <div>
       <div className="container">
-        <div className="jumbotron">
+
           <h1 style={cust}> Error 404.... &#128526;</h1>
-          <h1> Service Timed Out.. Sorry Your time has expired!!!!! </h1>
-          <h1>Please Renew your payments </h1>
+          <h1> This Page does not exist!!!! </h1>
+          <h1>Vist this correct route </h1>
           <span style={myStyle}>&#128528;</span>
-        </div>
+
       </div>
     </div>
   );

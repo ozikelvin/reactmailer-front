@@ -64,8 +64,9 @@ const [err, setErr] = useState(null);
        { err ?<span className='alert alert-danger ' >{err}</span> : <spand></spand> }
         </div>
         <div className="jumbotron">
-          <h4>The Mailer Coupon allows Users to be able to sign up</h4>
-          <h4>Click on the button below to create a coupon code </h4>
+          <h5>The Mailer Coupon allows Users to be able to sign up</h5>
+          <h5>Click on the button below to create a coupon code </h5>
+          {info ? <p className='alert alert-success ' >{info}</p> : <p></p> }
           <form onSubmit={onSub}>
             <div className="form-group">
               <input
@@ -76,7 +77,7 @@ const [err, setErr] = useState(null);
             </div>
           </form>
         </div>
-       {info ? <p className='alert alert-success ' >{info}</p> : <p></p> }
+
       </div>
     </div>
   );

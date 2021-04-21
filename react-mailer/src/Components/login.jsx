@@ -63,10 +63,11 @@ function SignIn() {
     <div>
       <NavBar />
 
-      {info ? <p style={syc} className=' alert alert-danger ' ><b> {info} </b></p>:<p></p> }
+
       <div style={myStyle} className="container">
         <div style={jub} className="jumbotron">
           <h1 style={hStyle}>Login</h1>
+          {info ? <p style={syc} className=' alert alert-danger ' ><b> {info} </b></p>:<p></p> }
           <form onSubmit={onSub}>
             <div className="form-group">
               <label htmlFor="Email">Email</label>
