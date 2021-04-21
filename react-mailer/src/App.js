@@ -1,6 +1,6 @@
 import React from "react";
 // eslint-disable-next-line
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Form from "./Components/Form.jsx";
 import Multiple from "./Components/multiple.jsx";
 import TimeOut from "./Components/timout.jsx";
@@ -14,14 +14,19 @@ function App() {
   return (
     <div>
       <Router>
+        <Switch>
         <Route path="/admin.v1/login" component={AdminLog} />
         <Route path="/admin.v1/dash" exact component={AdminDash} />
         <Route path="/" exact component={SignUp} />
         <Route path="/multiple" component={Multiple} />
-        <Route path="/timer" component={TimeOut} />
+
         <Route path="/sendMail" component={Form} />
         <Route exact path="/login" component={Login} />
         <Route path="/createCoupon" component={CreateCoupon} />
+        <Route path="/timer" component={TimeOut} />
+        <Route  component={TimeOut} />
+
+        </Switch>
       </Router>
     </div>
   );

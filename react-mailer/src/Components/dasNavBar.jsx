@@ -43,7 +43,8 @@ const logOut =()=>{
     position:'fixed',
     top:'0',
     width:'100%',
-    overflow:'hidden'
+    overflow:'hidden',
+    zIndex:'5'
   }
 
   const myStyle = {
