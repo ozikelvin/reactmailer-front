@@ -31,7 +31,7 @@ function SignUp() {
     };
 
     await axios
-      .post(`https://malino-cfo.herokuapp.com/reg`, newUser)
+      .post(`https://alizik.herokuapp.com/reg`, newUser)
       .then((res) => {
         console.log(res);
         if (res.status === 200) {

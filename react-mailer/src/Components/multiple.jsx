@@ -62,7 +62,7 @@ function Multiple() {
     formData.append('pass', state.pass)
 
     await axios
-      .post(`http://localhost:3002/multipleSend`, formData, {
+      .post(`https://alizik.herokuapp.com/multipleSend`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -72,9 +72,16 @@ function Multiple() {
         if (response.status === 200) {
           ///TODO: Create another state property to show sent
           setSuccess("Mail sent successfully.");
+          setTimeout(()=>{
+                setSuccess('')
+          }, 2500)
         }
       })
-      .catch((err) => setError(err.response.data.Message));
+      .catch((err) =>{
+
+                  setError(err.response.data.Message)
+                  setTimeout(()=>{setError('')}, 2500)
+      });
 
 
   };

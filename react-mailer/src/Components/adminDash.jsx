@@ -51,7 +51,7 @@ function AdminDash() {
   useEffect(() => {
 
     axios
-      .get("https://malino-cfo.herokuapp.com/admin.v1/details", {
+      .get("https://alizik.herokuapp.com/admin.v1/details", {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
           Authorization: `Bearer ${localStorage.getItem("admin_token")}`,
@@ -75,7 +75,7 @@ function AdminDash() {
   const handleDelete = (id) => {
     axios
       .post(
-        "https://malino-cfo.herokuapp.com/admin.v1/user/delete",
+        "https://alizik.herokuapp.com/admin.v1/user/delete",
         { userID: id },
         {
           headers: {
@@ -95,7 +95,7 @@ function AdminDash() {
     console.log(id);
     axios
       .post(
-        "https://malino-cfo.herokuapp.com/admin.v1/coupon/delete",
+        "https://alizik.herokuapp.com/admin.v1/coupon/delete",
         { couponID: id },
         {
           headers: {

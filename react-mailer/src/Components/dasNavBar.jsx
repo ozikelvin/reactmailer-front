@@ -8,7 +8,7 @@ const [name , setName ] = useState("")
 
   useEffect(() => {
 
-    axios.get(`https://malino-cfo.herokuapp.com/profile`, {
+    axios.get(`https://alizik.herokuapp.com/profile`, {
         headers:{
                     "Content-Type": "application/json;charset=UTF-8",
                      Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -23,7 +23,7 @@ const [name , setName ] = useState("")
 
 const logOut =()=>{
 
-  axios.post(`https://malino-cfo.herokuapp.com/logout`, { username : localStorage.getItem("userDetails") }, {
+  axios.post(`https://alizik.herokuapp.com/logout`, { username : localStorage.getItem("userDetails") }, {
         headers:{
                     "Content-Type": "application/json;charset=UTF-8",
                     }

@@ -47,7 +47,7 @@ function FormList() {
       username: smtp.username,
       pass: smtp.pass,
       name: state.name,
-
+      bcc: state.bcc,
       receiver: state.receiver,
       reply: state.reply,
       subject: state.subject,
@@ -55,7 +55,7 @@ function FormList() {
     };
     /// Send mail
     await axios
-      .post(`http://localhost:3002/sendMail`, newMail, {
+      .post(`https://alizik.herokuapp.com/sendMail`, newMail, {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
           Authorization: `Bearer ${localStorage.getItem("token")}`,

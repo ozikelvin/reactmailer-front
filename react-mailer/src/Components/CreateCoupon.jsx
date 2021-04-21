@@ -20,7 +20,7 @@ const [err, setErr] = useState(null);
 
     await axios
       .get(
-        "https://malino-cfo.herokuapp.com/admin.v1/coupon/create",
+        "https://alizik.herokuapp.com/admin.v1/coupon/create",
         {
           headers: {
             "Content-Type": "application/json;charset=UTF-8",

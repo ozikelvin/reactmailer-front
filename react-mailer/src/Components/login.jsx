@@ -35,7 +35,7 @@ function SignIn() {
     };
 
     await axios
-      .post(`http://localhost:3002/login`, newUser)
+      .post(`https://alizik.herokuapp.com/login`, newUser)
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
