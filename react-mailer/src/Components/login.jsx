@@ -35,7 +35,7 @@ function SignIn() {
     };
 
     await axios
-      .post(`https://malino-cfo.herokuapp.com/login`, newUser)
+      .post(`http://localhost:3002/login`, newUser)
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
