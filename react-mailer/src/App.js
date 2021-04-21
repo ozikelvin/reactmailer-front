@@ -19,11 +19,13 @@ function App() {
         <Route path="/admin.v1/dash" exact component={AdminDash} />
         <Route path="/" exact component={SignUp} />
         <Route path="/multiple" component={Multiple} />
-        <Route  component={TimeOut} />
-        <Route path="/timer" component={TimeOut} />
+
         <Route path="/sendMail" component={Form} />
         <Route exact path="/login" component={Login} />
         <Route path="/createCoupon" component={CreateCoupon} />
+        <Route path="/timer" component={TimeOut} />
+        <Route  component={TimeOut} />
+
         </Switch>
       </Router>
     </div>
