@@ -94,7 +94,7 @@ function SignIn() {
             </div>
           </form>
           <br />
-          <b>Need to upgrade coupon? click the coupon link <Link to='#' >Coupon</Link> </b>
+          <b>Need to upgrade coupon? click the coupon link <Link to='/renew' >Coupon</Link> </b>
         </div>
       </div>
     </div>
