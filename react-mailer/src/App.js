@@ -2,13 +2,14 @@ import React from "react";
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Form from "./Components/Form.jsx";
-import Multiple from "./Components/multiple.jsx";
-import TimeOut from "./Components/timout.jsx";
-import SignUp from "./Components/signUp.jsx";
-import Login from "./Components/login.jsx";
+import Multiple from "./Components/multiple";
+import TimeOut from "./Components/timout";
+import SignUp from "./Components/signUp";
+import Login from "./Components/login";
 import AdminLog from "./Components/aminLog";
 import AdminDash from "./Components/adminDash";
 import CreateCoupon from "./Components/CreateCoupon";
+import Renew from './Components/renew';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
 
         <Route path="/sendMail" component={Form} />
         <Route exact path="/login" component={Login} />
+        <Route path='/renew' component={Renew} />
         <Route path="/createCoupon" component={CreateCoupon} />
         <Route path="/timer" component={TimeOut} />
         <Route  component={TimeOut} />

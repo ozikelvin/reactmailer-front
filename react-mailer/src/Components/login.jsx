@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import NavBar from "./Navbar";
 import { useHistory, Link } from "react-router-dom";
-import { checkedLoggedInUser } from "./checkLoggedIn";
+
 function SignIn() {
   let history = useHistory();
 
@@ -101,4 +101,4 @@ function SignIn() {
   );
 }
 
-export default checkedLoggedInUser(SignIn);
+export default SignIn;
