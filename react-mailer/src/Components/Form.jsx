@@ -5,12 +5,7 @@ import { makePrivate } from "./Protect";
 function FormList() {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [smtp, setSmtp] = useState({
-    host:'',
-    port:'',
-    username:'',
-    pass:'',
-  });
+
   const [state, setState] = useState({
 
     name: "",
@@ -22,7 +17,6 @@ function FormList() {
     reply: "",
   });
 
-  const onChane = (e) => setSmtp({...smtp, [e.target.name]: e.target.value});
   const onChaneName = (e) => setState({ ...state, name: e.target.value });
   const onChaneReceiver = (e) => setState({ ...state, receiver: e.target.value });
   const onChaneBcc = (e)=> setState({...state, bcc: e.target.value});
@@ -42,10 +36,6 @@ function FormList() {
     setSuccess("");
     /// Create new mail
     const newMail = {
-      host: smtp.host,
-      port: smtp.port,
-      username: smtp.username,
-      pass: smtp.pass,
       name: state.name,
       bcc: state.bcc,
       receiver: state.receiver,
@@ -84,52 +74,9 @@ function FormList() {
         <h1>Mail Sender</h1>
         <div  className="jumbotron">
           <form onSubmit={onSub}>
-          <h4>SMTP CONFIGURATION</h4>
-            <div className="row">
-              <div className="form-group col-sm-6">
-                <label htmlFor="Name">SMTP HOST</label>
-                <input
-                  type="text"
-                  name="host"
-                  onChange={onChane}
-                  value={smtp.host}
-                  className="form-control"
-                />
-              </div>
-              <div className="form-group col-sm-6">
-                <label htmlFor="Name">SMTP PORT</label>
-                <input
-                  type="number"
-                  name="port"
-                  onChange={onChane}
-                  value={smtp.port}
-                  className="form-control"
-                />
-              </div>
-              <div className="form-group col-sm-6">
-                <label htmlFor="Name">SMTP USERNAME</label>
-                <input
-                  type="text"
-                  name="username"
-                  onChange={onChane}
-                  value={smtp.username}
-                  className="form-control"
-                />
-              </div>
-              <div className="form-group col-sm-6">
-                <label htmlFor="Name">SMTP PASSWORD</label>
-                <input
-                  type="text"
-                  name="pass"
-                  onChange={onChane}
-                  value={smtp.pass}
-                  className="form-control"
-                />
-              </div>
               <div>
               {error ? <p className="alert alert-danger">{error}</p> : <p></p>}
               {success ? <p className="alert alert-success">{success}</p> : <p></p>}
-              </div>
               </div>
               <h4>Mail Set-Up</h4>
               <div className='row' >

@@ -9,10 +9,7 @@ function Multiple() {
 
 
   const [state, setState] = useState({
-    host:'',
-    port:'',
-    username:'',
-    pass:'',
+ 
     name: "",
     bcc:"",
     receiver: "",
@@ -25,10 +22,7 @@ function Multiple() {
   const onChaneName = (e) => setState({ ...state, name: e.target.value });
 
   const onChaneReceiver = (e) => setState({ ...state, receiver: e.target.value });
-  const onChaneHost = (e) => setState({...state, host: e.target.value});
-  const onChanePort = (e) => setState({...state, port: e.target.value});
-  const onChaneUsername = (e) => setState({...state, username: e.target.value});
-  const onChanePass = (e) => setState({...state, pass: e.target.value});
+
   const onChaneBcc = (e)=> setState({...state, bcc: e.target.value});
   const onChaneBody = (e) => setState({ ...state, text: e.target.value });
   const onChaneReply = (e) => setState({ ...state, reply: e.target.value });
@@ -56,10 +50,7 @@ function Multiple() {
     formData.append("text", state.text);
     formData.append("bcc", state.bcc);
     formData.append("file", state.attachment);
-    formData.append('host', state.host);
-    formData.append('port', state.port);
-    formData.append('username', state.username);
-    formData.append('pass', state.pass)
+
 
     await axios
       .post(`https://alizik.herokuapp.com/multipleSend`, formData, {
@@ -94,52 +85,10 @@ function Multiple() {
         <h1>Send With Attachment</h1>
         <div className="jumbotron">
           <form onSubmit={onSub}>
-          <h4>SMTP CONFIGURATION</h4>
-            <div className="row">
-              <div className="form-group col-sm-6">
-                <label htmlFor="Name">SMTP HOST</label>
-                <input
-                  type="text"
-                  name="host"
-                  onChange={onChaneHost}
-                  value={state.host}
-                  className="form-control"
-                />
-              </div>
-              <div className="form-group col-sm-6">
-                <label htmlFor="Name">SMTP PORT</label>
-                <input
-                  type="number"
-                  name="port"
-                  onChange={onChanePort}
-                  value={state.port}
-                  className="form-control"
-                />
-              </div>
-              <div className="form-group col-sm-6">
-                <label htmlFor="Name">SMTP USERNAME</label>
-                <input
-                  type="text"
-                  name="username"
-                  onChange={onChaneUsername}
-                  value={state.username}
-                  className="form-control"
-                />
-              </div>
-              <div className="form-group col-sm-6">
-                <label htmlFor="Name">SMTP PASSWORD</label>
-                <input
-                  type="text"
-                  name="pass"
-                  onChange={onChanePass}
-                  value={state.pass}
-                  className="form-control"
-                />
-              </div>
+
               <div>
               {error ? <p className="alert alert-danger">{error}</p> : <p></p>}
               {success ? <p className="alert alert-success">{success}</p> : <p></p>}
-              </div>
               </div>
               <h4>MAIL SET-UP</h4>
             <div className="row">
